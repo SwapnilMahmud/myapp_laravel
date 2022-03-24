@@ -25,6 +25,8 @@
   
 **/
 
+
+
 jQuery(function ($) {
     /* ----------------------------------------------------------- */
     /*  1. CARTBOX 
@@ -49,191 +51,18 @@ jQuery(function ($) {
     /*  3. PRODUCT VIEW SLIDER 
   /* ----------------------------------------------------------- */
 
-    jQuery("#demo-1 .simpleLens-thumbnails-container img").simpleGallery({
-        loading_image: "demo/images/loading.gif",
-    });
-
-    jQuery("#demo-1 .simpleLens-big-image").simpleLens({
-        loading_image: "demo/images/loading.gif",
-    });
+    
 
     /* ----------------------------------------------------------- */
     /*  4. POPULAR PRODUCT SLIDER (SLICK SLIDER)
   /* ----------------------------------------------------------- */
 
-    jQuery(".aa-popular-slider").slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ],
-    });
+  
 
     /* ----------------------------------------------------------- */
     /*  5. FEATURED PRODUCT SLIDER (SLICK SLIDER)
   /* ----------------------------------------------------------- */
 
-    jQuery(".aa-featured-slider").slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ],
-    });
-
-    /* ----------------------------------------------------------- */
-    /*  6. LATEST PRODUCT SLIDER (SLICK SLIDER)
-  /* ----------------------------------------------------------- */
-    jQuery(".aa-latest-slider").slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ],
-    });
-
-    /* ----------------------------------------------------------- */
-    /*  7. TESTIMONIAL SLIDER (SLICK SLIDER)
-  /* ----------------------------------------------------------- */
-
-    jQuery(".aa-testimonial-slider").slick({
-        dots: true,
-        infinite: true,
-        arrows: false,
-        speed: 300,
-        slidesToShow: 1,
-        adaptiveHeight: true,
-    });
-
-    /* ----------------------------------------------------------- */
-    /*  8. CLIENT BRAND SLIDER (SLICK SLIDER)
-  /* ----------------------------------------------------------- */
-
-    jQuery(".aa-client-brand-slider").slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ],
-    });
-
-    /* ----------------------------------------------------------- */
-    /*  9. PRICE SLIDER  (noUiSlider SLIDER)
-  /* ----------------------------------------------------------- */
 
     jQuery(function () {
         if ($("body").is(".productPage")) {
@@ -299,11 +128,7 @@ jQuery(function ($) {
     /*  11. PRELOADER
   /* ----------------------------------------------------------- */
 
-    jQuery(window).load(function () {
-        // makes sure the whole site is loaded
-        jQuery("#wpf-loader-two").delay(200).fadeOut("slow"); // will fade out
-    });
-
+ 
     /* ----------------------------------------------------------- */
     /*  12. GRID AND LIST LAYOUT CHANGER 
   /* ----------------------------------------------------------- */
@@ -321,41 +146,7 @@ jQuery(function ($) {
     /*  13. RELATED ITEM SLIDER (SLICK SLIDER)
   /* ----------------------------------------------------------- */
 
-    jQuery(".aa-related-item-slider").slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ],
-    });
+   
 });
 
 function change_product_color_image(img, color) {
@@ -519,6 +310,148 @@ jQuery("#frmRegistration").submit(function (e) {
         },
     });
 });
+// .....................................employee add start...
+
+$(document).ready(function(){
+    fetchemployee();    
+  function fetchemployee(){
+      $.ajax({
+        type:"GET",
+        url:"/fetch-employee",
+        dataType:"json",
+        success:function(response){
+            // $('tbody').html("");
+          $.each(response.emp ,function(key,item){
+            $("#studentTable tbody").prepend('<tr>\
+            <td><div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"><label class="form-check-label" for="flexCheckChecked"></label></div></td>\
+            <td>'+item.fname+'</td>\
+            <td>'+item.lname+'</td>\
+             <td>'+item.email+'</td>\
+             <td>'+item.phone+'</td>\
+             <td><a class="btn btn-danger"  href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> </a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a></td>\
+             </tr>');
+          });
+            // $("#studentTable tbody").prepend('<tr><td>'+response.emp.firstname+'</td><td>'+response.emp.lastname+'</td> <td>'+response.emp.email+'</td><td>'+response.emp.phone+'</td></tr>');
+            
+        }
+      });
+  }
+ 
+
+ jQuery("#add_employee").submit(function (e) {
+    var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
+    $("input[name='phone_number[full]'").val(full_number);
+    e.preventDefault();
+    let formData = new FormData(this);
+    jQuery(".field_error").html("");
+    $('#image-input-error').text('');
+    jQuery.ajax({
+        type:'POST',
+        url: `/empadd_process`,
+       data: formData,
+       contentType: false,
+       processData: false,
+       
+       success: function (result) {
+        
+        if (result.status == "error") {
+            jQuery.each(result.error, function (key, val) {
+                jQuery("#" + key + "_error").html(val[0]);
+            });
+        }
+        if (result.status == "success") {
+            window.location.href="/employee_add";
+            jQuery("#add_employee")[0].reset();
+            $('#exampleModal').modal('hide');
+                
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {                    
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })              
+              Toast.fire({
+                icon: 'success',
+                title: 'Registration Successfull.  please check your email id for verification'
+              })
+           
+           
+        }
+    },
+        
+    });
+});
+
+
+});
+// $(document).ready(function (){
+//    $(document).on('submit', '#add_employee', function(e){
+//           e.preventDefault();
+//           let formData=new FormData($('#add_employee')[0]);
+//           $.ajax({
+//             type: "POST",
+//             url:$(this).attr("action"),
+//             data: formData,
+//             contentType: false,
+//             processData:false,
+//            success: function(data)
+//               {
+                  
+//               }, 
+
+//           });
+//    });
+// });
+
+// $(document).ready(function (e) {
+//     $("#add_employee").on('submit',(function(e) {
+//      e.preventDefault();
+//      $.ajax({
+//       url:$(this).attr("action"),
+//       type: "POST",
+//       data:  new FormData(this),
+//       contentType: false,
+//             cache: false,
+//       processData:false,
+//       success: function(data)
+//          {
+      
+//          },         
+//        });
+//     }));
+//    });
+
+
+
+
+// $(document).on("submit", "#add_employee", function(event)
+// {
+//     event.preventDefault();
+//     $.ajax({
+//         url: $(this).attr("action"),
+//         type: $(this).attr("method"),
+//         dataType: "JSON",
+//         data: new FormData(this),
+//         processData: false,
+//         contentType: false,
+//         success: function (data, status)
+//         {
+
+//         },
+       
+//     });        
+
+// });
+
+
+// .....................................employee add end...
+
+
 
 jQuery("#frmLogin").submit(function (e) {
     e.preventDefault();

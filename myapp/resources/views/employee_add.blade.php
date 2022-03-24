@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -26,6 +25,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <body>
 <title>employee</title>
 <style>
@@ -159,7 +160,7 @@
 						<a class="btn btn-danger"  href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> Delete all </a> 
 					</div>
 						<div class="card-body">
-							<table id="studentTable" class="table table-bordered">
+							<table id="studentTable" class="table table-bordered table-striped">
 								<thead>
 									<tr>
 										<th>
@@ -176,23 +177,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr id="">
-										<td>
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked"> </label>
-											</div>
-										</td>
-										<td>swapnil</td>
-										<td>mahmud</td>
-										<td>mahmud@gmail.com</td>
-										<td>01839500005</td>
-										<td>                   
-                                        <a class="btn btn-danger"  href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> </a> 
-                                        <a class="btn btn-primary" href="#navigation-main"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a> 
-                                        <a class="btn btn-primary" href="#navigation-main"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a> 
-                                        <a class="btn btn-primary" href="#navigation-main"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a> </td>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>
@@ -211,24 +196,25 @@
 					<h5 class="modal-title" id="exampleModalLabel">Add Form</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
 				</div>
-				<div class="modal-body">
-					<form>
+				<div class="modal-body" >
+					<form   method="POST" enctype="multipart/form-data" id="add_employee" >
 						<div class="form-group  ">
-							<input type="text" class="form-control" id="inputPassword2" placeholder="First Name"> </div>
+							<input type="text" class="form-control" name="fname" id="fname" placeholder="First Name"> </div>
 							<div class="form-group  ">
-							<input type="text" class="form-control" id="inputPassword2" placeholder="Last Name"> </div>
+							<input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name"> </div>
 						<div class="form-group ">
-							<input type="password" class="form-control" id="inputPassword2" placeholder="Email"> </div>
-						<div class="form-group ">
-					
+							<input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com"> </div>
+						
+						<div class="form-group  ">
+						<input type="file" name="file" class="form-control" id="image-input">
+						</div>
+						<div class="form-group ">					
                              <input type="tel" class="form-control" name="phone_number[main]" id="phone_number" />
-  
-</div>
-
-<div class="form-group ">
-
-<select class="country_list">
-								<option value=""> </option>
+						</div>
+						
+                        <div class="form-group ">
+                             <select class="country_list" id="country"  name="country" >
+								<option value="" > </option>
 								<option value="United States">United States</option>
 								<option value="United Kingdom">United Kingdom</option>
 								<option value="Afghanistan">Afghanistan</option>
@@ -244,36 +230,29 @@
 								<option value="Zambia">Zambia</option>
 								<option value="Zimbabwe">Zimbabwe</option>
 							</select>
-
-							</div>
-							<div class="form-group ">
+						</div>
+						<div class="form-group ">
 							<div class="form-check form-check-inline">
 								<label class="form-check-label p-1" for="defaultCheck2">Gender </label>
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+								<input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male">
 								<label class="form-check-label" for="inlineRadio1">male</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+								<input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
 								<label class="form-check-label" for="inlineRadio2">female</label>
 
-							<div class="form-check vrfy">
-							<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-							<label class="form-check-label" for="defaultCheck2"> Is Verify </label>
-							
+								<div class="form-check vrfy">
+								<input class="form-check-input" type="checkbox" id="is_verify"  name="is_verify" id="defaultCheck2">
+								<label class="form-check-label" for="defaultCheck2"> Is Verify </label>
+								</div>
+					        </div>							
 						</div>
-							</div>
-
-
-							
-						</div>
-
-                        <div class="form-group  ">
-							<input type="file" class="form-control" id="inputPassword2" placeholder="Name"> </div>
+                       
 						<div class="form-group ">
-							<input type="password" class="form-control" id="inputPassword2" placeholder="password"> </div>
-						
-						
-						<button type="button" class="btn btn-primary">Submit</button>
+							<input type="password" name="password" class="form-control" id="inputPassword2" placeholder="password"> 
+						</div>
+						<button type="submit" id="btnAddemp" class="btn btn-primary">Submit</button>
+						@csrf  
 					</form>
 				</div>
 				<!-- <div class="modal-footer">
@@ -306,6 +285,8 @@
 </div>     
 
 
+<script src="{{asset('front_assets/js/custom.js')}}"></script> 
+
   <script>
 
 var phone_number = window.intlTelInput(document.querySelector("#phone_number"), {
@@ -315,19 +296,16 @@ var phone_number = window.intlTelInput(document.querySelector("#phone_number"), 
   utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
 });
 
-$("form").submit(function() {
-  var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
-$("input[name='phone_number[full]'").val(full_number);
-  alert(full_number)
-  
-});
+
+
   </script>
 	<script>
 	jQuery('.country_list').chosen();
 	</script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="sweetalert2.all.min.js"></script>
 </body>
 
 </html>

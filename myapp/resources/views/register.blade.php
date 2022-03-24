@@ -24,7 +24,7 @@
                     <label for="">Mobile<span>*</span></label>
                     <input type="text"  name="mobile" placeholder="mobile" required>
                     <span id="mobile_error" class="field_error"></span></br>
-                    @csrf  
+                       @csrf  
                     <button type="submit" id="btnRegistration" class="btn btn-info">Register</button>                                 
                   </form>
                 </div>

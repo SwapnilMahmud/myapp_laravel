@@ -21,6 +21,8 @@ class CustomerController extends Controller
    
     public function registration_process(Request $request)
     {
+        
+        
         $valid=Validator::make($request->all(),[
             'name'=>'required',
             'email'=>'required|email|unique:customers,email',
@@ -60,16 +62,7 @@ class CustomerController extends Controller
        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
 
     public function email_verification(Request $request,$id){
@@ -91,6 +84,12 @@ class CustomerController extends Controller
     
     }
 
+  
+
+
+
+
+
     /**
      * Display the specified resource.
      *
@@ -109,12 +108,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function employee_add(Customer $customer)
-    {
-        //
-        return view('/employee_add');
-    }
-
+  
     /**
      * Update the specified resource in storage.
      *
@@ -135,6 +129,6 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+     
     }
 }
