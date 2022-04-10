@@ -320,7 +320,6 @@ $(document).ready(function(){
         url:"/fetch-employee",
         dataType:"json",
         success:function(response){
-            // $('tbody').html("");
           $.each(response.emp ,function(key,item){
             $("#studentTable tbody").prepend('<tr>\
             <td><div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"><label class="form-check-label" for="flexCheckChecked"></label></div></td>\
@@ -331,13 +330,10 @@ $(document).ready(function(){
              <td><a class="btn btn-danger"  href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> </a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a></td>\
              </tr>');
           });
-            // $("#studentTable tbody").prepend('<tr><td>'+response.emp.firstname+'</td><td>'+response.emp.lastname+'</td> <td>'+response.emp.email+'</td><td>'+response.emp.phone+'</td></tr>');
             
         }
       });
   }
- 
-
  jQuery("#add_employee").submit(function (e) {
     var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
     $("input[name='phone_number[full]'").val(full_number);
@@ -350,10 +346,8 @@ $(document).ready(function(){
         url: `/empadd_process`,
        data: formData,
        contentType: false,
-       processData: false,
-       
-       success: function (result) {
-        
+       processData: false,       
+       success: function (result) {        
         if (result.status == "error") {
             jQuery.each(result.error, function (key, val) {
                 jQuery("#" + key + "_error").html(val[0]);
@@ -378,77 +372,12 @@ $(document).ready(function(){
               Toast.fire({
                 icon: 'success',
                 title: 'Registration Successfull.  please check your email id for verification'
-              })
-           
-           
+              })           
         }
-    },
-        
+    },        
     });
 });
-
-
 });
-// $(document).ready(function (){
-//    $(document).on('submit', '#add_employee', function(e){
-//           e.preventDefault();
-//           let formData=new FormData($('#add_employee')[0]);
-//           $.ajax({
-//             type: "POST",
-//             url:$(this).attr("action"),
-//             data: formData,
-//             contentType: false,
-//             processData:false,
-//            success: function(data)
-//               {
-                  
-//               }, 
-
-//           });
-//    });
-// });
-
-// $(document).ready(function (e) {
-//     $("#add_employee").on('submit',(function(e) {
-//      e.preventDefault();
-//      $.ajax({
-//       url:$(this).attr("action"),
-//       type: "POST",
-//       data:  new FormData(this),
-//       contentType: false,
-//             cache: false,
-//       processData:false,
-//       success: function(data)
-//          {
-      
-//          },         
-//        });
-//     }));
-//    });
-
-
-
-
-// $(document).on("submit", "#add_employee", function(event)
-// {
-//     event.preventDefault();
-//     $.ajax({
-//         url: $(this).attr("action"),
-//         type: $(this).attr("method"),
-//         dataType: "JSON",
-//         data: new FormData(this),
-//         processData: false,
-//         contentType: false,
-//         success: function (data, status)
-//         {
-
-//         },
-       
-//     });        
-
-// });
-
-
 // .....................................employee add end...
 
 
