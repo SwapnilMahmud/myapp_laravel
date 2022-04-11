@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -101,8 +101,7 @@ class StudentController extends Controller
      */
     public function empData(Student $student)
     {
-        $employees = Student::orderBy('id','DESC')->get();
-        dd($employees);
+        $employees = Student::orderBy('id','DESC')->get();       
         return view('employee_add',compact('employees'));
       
     }
@@ -128,5 +127,34 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         //
+    }
+
+    public function getCountry()
+    {
+        $data['country']=DB::table('country')->orderBy('country','asc')->get();
+        return view('/index',$data);
+    }
+    public function getState(Request $request)
+    {
+     $cid=$request->post('cid');
+     $state=DB::table('state')->where('country',$cid)->orderBy('state','asc')->get();
+     $html='<option value="">Select State</option>';
+     foreach($state as $list){
+        $html.='<option value="'.$list->id.'">'.$list->state.'</option>';
+     }
+     echo $html;
+    
+    }
+
+    public function getCity(Request $request)
+    {
+     $sid=$request->post('sid');
+     $city=DB::table('city')->where('state',$sid)->orderBy('city','asc')->get();
+     $html='<option value="">Select city</option>';
+     foreach($city as $list){
+        $html.='<option value="'.$list->id.'">'.$list->city.'</option>';
+     }
+     echo $html;
+    
     }
 }
