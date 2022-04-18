@@ -321,13 +321,13 @@ $(document).ready(function(){
         dataType:"json",
         success:function(response){
           $.each(response.emp ,function(key,item){
-            $("#studentTable tbody").prepend('<tr>\
-            <td><div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"><label class="form-check-label" for="flexCheckChecked"></label></div></td>\
+            $("#studentTable tbody").prepend('<tr id="sid'+item.id+'">\
+            <td><div class="form-check"><input class="form-check-input checkBoxClass" name="ids" type="checkbox" value="'+item.id+'" id="flexCheckChecked ids"><label class="checkBoxClass" for="flexCheckChecked"></label></div></td>\
             <td>'+item.fname+'</td>\
             <td>'+item.lname+'</td>\
              <td>'+item.email+'</td>\
              <td>'+item.phone+'</td>\
-             <td><a class="btn btn-danger"  href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> </a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a></td>\
+             <td><a class="btn btn-danger" href="javascript:void(0)" onclick="deleteStudent('+item.id+')"   class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> </a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a></td>\
              </tr>');
           });
             

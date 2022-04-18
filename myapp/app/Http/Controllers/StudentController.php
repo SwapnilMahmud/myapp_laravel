@@ -7,21 +7,8 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+ 
     public function employee_add()
     {
         //
@@ -67,6 +54,10 @@ class StudentController extends Controller
           $val->password=$request->password;
           $val->phone=$num;
           $val->is_verify=0;
+          if($request->is_verify!==null){
+            $val->is_verify=1;
+        }
+         
           $val->img_name = $imageName;
           $val->img_path = '/storage/'.$path;
         
@@ -93,12 +84,6 @@ class StudentController extends Controller
         return response()->json(['emp'=>$employee,]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Student  $student
-     * @return \Illuminate\Http\Response
-     */
     public function empData(Student $student)
     {
         $employees = Student::orderBy('id','DESC')->get();       
@@ -106,7 +91,73 @@ class StudentController extends Controller
       
     }
 
+  
+    public function getCountry()
+    {
+        $data['country']=DB::table('country')->orderBy('country','asc')->get();
+        return view('/index',$data);
+    }
+
+    public function getState(Request $request)
+    {
+     $cid=$request->post('cid');
+     $state=DB::table('state')->where('country',$cid)->orderBy('state','asc')->get();
+     $html='<option value="">Select State</option>';
+     foreach($state as $list){
+        $html.='<option value="'.$list->id.'">'.$list->state.'</option>';
+     }
+     echo $html;    
+    }    
+
+    public function getCity(Request $request)
+    {
+     $sid=$request->post('sid');
+     $city=DB::table('city')->where('state',$sid)->orderBy('city','asc')->get();
+     $html='<option value="">Select city</option>';
+     foreach($city as $list){
+        $html.='<option value="'.$list->id.'">'.$list->city.'</option>';
+     }
+     echo $html;    
+    }
+
+    public function deleteCheckedStudents(Request $request){
+        $ids=$request->ids;
+        Student::whereIn('id',$ids)->delete();
+        return response()->json(['success'=>"students have been deleted"]);
+    }
+
+    public function deleteStudent($id){       
+         $student=Student::find($id);         
+         $student->delete();
+         return response()->json(['success'=>"students have been deleted"]);
+    }
+
+
+
+
+
+
+
+
+
+
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Student  $student
+     * @return \Illuminate\Http\Response
+     */
+      /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -129,32 +180,4 @@ class StudentController extends Controller
         //
     }
 
-    public function getCountry()
-    {
-        $data['country']=DB::table('country')->orderBy('country','asc')->get();
-        return view('/index',$data);
-    }
-    public function getState(Request $request)
-    {
-     $cid=$request->post('cid');
-     $state=DB::table('state')->where('country',$cid)->orderBy('state','asc')->get();
-     $html='<option value="">Select State</option>';
-     foreach($state as $list){
-        $html.='<option value="'.$list->id.'">'.$list->state.'</option>';
-     }
-     echo $html;
-    
-    }
-
-    public function getCity(Request $request)
-    {
-     $sid=$request->post('sid');
-     $city=DB::table('city')->where('state',$sid)->orderBy('city','asc')->get();
-     $html='<option value="">Select city</option>';
-     foreach($city as $list){
-        $html.='<option value="'.$list->id.'">'.$list->city.'</option>';
-     }
-     echo $html;
-    
-    }
 }

@@ -147,6 +147,20 @@
 .chosen-search{
 	background-color:white;
 }
+.modal-backdrop {
+	display:none;
+}
+#wrapper
+{
+ text-align:center;
+ margin:0 auto;
+ padding:0px;
+ width:995px;
+}
+#output_image
+{
+ max-width:300px;
+}
 </style>
 </head>
 <body>
@@ -157,7 +171,7 @@
 					<div class="card">
 						<div class="card-header"> 
 						<a href="#" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add New Member</a> 
-						<a class="btn btn-danger"  href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> Delete all </a> 
+						<a class="btn btn-danger"   href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> Delete selected</a> 
 					</div>
 						<div class="card-body">
 							<table id="studentTable" class="table table-bordered table-striped">
@@ -165,7 +179,7 @@
 									<tr>
 										<th>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<input class="form-check-input" type="checkbox" value="" id="chkCheckAll">
 												<label class="form-check-label" for="flexCheckChecked"> </label>
 											</div>
 										</th>
@@ -206,7 +220,10 @@
 							<input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com"> </div>
 						
 						<div class="form-group  ">
-						<input type="file" name="file" class="form-control" id="image-input">
+						<input type="file" name="file" class="form-control" id="image-input" accept="image/*" onchange="preview_image(event)">
+
+					
+                          <img id="output_image"/>
 						</div>
 						<div class="form-group ">					
                              <input type="tel" class="form-control" name="phone_number[main]" id="phone_number" />
@@ -263,7 +280,7 @@
 		</div>
 	</div>
   <!-- Modal HTML -->
-<div id="myModal" class="modal fade">
+<div id="myModal"  class="modal fade">
 	<div class="modal-dialog modal-confirm">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
@@ -277,35 +294,107 @@
 				<p>Do you really want to delete these records? This process cannot be undone.</p>
 			</div>
 			<div class="modal-footer justify-content-center">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-danger">Delete</button>
+				<button type="button" class="btn btn-secondary" onclick="document.getElementById('myModal').style.display='none'" data-dismiss="modal">Cancel</button>
+				<button type="button" id="deleteAllSelectedRecord" onclick="document.getElementById('myModal').style.display='none'" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 	</div>
 </div>     
 
 
+
+
+
 <script src="{{asset('front_assets/js/custom.js')}}"></script> 
-
-  <script>
-
+<script>
 var phone_number = window.intlTelInput(document.querySelector("#phone_number"), {
   separateDialCode: true,
   preferredCountries:["bd"],
   hiddenInput: "full",
   utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
 });
+</script>
+<script>jQuery('.country_list').chosen();</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script>
+	$(function(e){
+		$("#chkCheckAll").click(function(){
+           $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+		});
+		$("#deleteAllSelectedRecord").click(function(e){
+			e.preventDefault();
+			var allids=[];
+         $("input:checkbox[name=ids]:checked").each(function(){
+            allids.push($(this).val());
+		 });
+		 $.ajax({
+			 url:"{{route('student.deleteSelected')}}",
+			 type:"DELETE",
+			 data:{
+				 _token:$("input[name=_token]").val(),
+				 ids:allids
+			 },
+			 success:function(response){
+				 $.each(allids,function(key,val){
+					 $("#sid"+val).remove();
+				 })
+			 }
+		 })
+		});
+	});
+</script>
+<script>
+	function  deleteStudent(id){
+		// alert($id);
+		if(confirm("do you want to delete this record?")){
+			$.ajax({
+              url:'/students/'+id,
+			  type:"DELETE",
+			  data:{
+				 _token:$("input[name=_token]").val(),
+				 ids:id
+				 
+			 },
+			 success:function(response){
+				 
+					 $("#sid"+id).remove();
+				 
+			 }
+			});
+		}
+	}
+</script>
+
+<script>	
+// Get the modal
+var modal = document.getElementById('myModal');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 
 
-  </script>
-	<script>
-	jQuery('.country_list').chosen();
-	</script>
 
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="sweetalert2.all.min.js"></script>
+
+
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
 </body>
-
 </html>
