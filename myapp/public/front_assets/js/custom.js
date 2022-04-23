@@ -330,6 +330,7 @@ $(document).ready(function(){
              <td><a class="btn btn-danger" href="javascript:void(0)" onclick="deleteStudent('+item.id+')"   class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> </a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a><a class="btn btn-primary" href="#navigation-main"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a></td>\
              </tr>');
           });
+          $('#studentTable').dataTable();
             
         }
       });
