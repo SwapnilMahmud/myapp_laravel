@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +38,4 @@ Route::get('/employee',[StudentController::class,'empData']);
 Route::delete('/selected-students',[StudentController::class,'deleteCheckedStudents'])->name('student.deleteSelected');
 Route::delete('/students/{id}',[StudentController::class,'deleteStudent']);
 
+Route::get('pdf',[PdfController::class,'generate']);
