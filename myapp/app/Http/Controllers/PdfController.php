@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Student;
@@ -30,5 +31,9 @@ class PdfController extends Controller
             $mpdf->WriteHTML($html);
             $mpdf->Output($fileName,'I');
     }
-    
+    public function generateexcel(){
+        $data=Student::all();
+        return (new FastExcel(Student::all()))->download('file.xlsx');
+         
+     }
 }

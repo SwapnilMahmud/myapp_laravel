@@ -39,3 +39,4 @@ Route::delete('/selected-students',[StudentController::class,'deleteCheckedStude
 Route::delete('/students/{id}',[StudentController::class,'deleteStudent']);
 
 Route::get('pdf',[PdfController::class,'generate']);
+Route::get('/excel',[PdfController::class, 'generateexcel']);
