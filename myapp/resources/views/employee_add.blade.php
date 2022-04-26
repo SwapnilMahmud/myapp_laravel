@@ -183,7 +183,7 @@
 						<a class="btn btn-danger"   href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-trash-o fa-lg"></i> Delete selected</a> 
 						<a class="btn btn-primary"   href="{{url('/excel')}}"  ><i class="fa fa-download fa-lg" aria-hidden="true"> Excel</i></a> 
 						<a class="btn btn-primary"   href="{{url('/pdf')}}"  ><i class="fa fa-download fa-lg" aria-hidden="true"> PDF</i></a> 
-						<a class="btn btn-primary"   href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-download fa-lg" aria-hidden="true"> CSV</i></a> 
+						<a class="btn btn-primary"  href="{{url('/invoice')}}"  ><i class="fa fa-download fa-lg" aria-hidden="true"> CSV</i></a> 
 					</div>
 						<div class="card-body">
 							<table id="studentTable" class="table table-bordered table-striped">

@@ -36,4 +36,12 @@ class PdfController extends Controller
         return (new FastExcel(Student::all()))->download('file.xlsx');
          
      }
+     public function generatinvoice(){
+        // $data=Student::all();
+        
+     $invoices =Student::orderBy('created_at', 'DESC')->get();
+     return (new FastExcel($invoices))->download('invoices.csv');
+         
+     }
+
 }
